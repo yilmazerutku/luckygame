@@ -10,31 +10,30 @@
             color: #333;
             text-align: center;
             padding: 20px;
+            margin: 0;
+            overflow: hidden; /* Sayfa dışı kaydırma engelle */
         }
         .iframe-container {
-    width: 80%;
-    max-width: 800px;
-    height: 600px;
-    overflow: hidden; /* Bu zaten iframe dışındaki kutunun kaydırmasını engelliyor */
-    margin: 20px auto;
-    border: 2px solid #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    overflow: hidden;           /* iframe içi kaydırma gizleme */
-    scrollbar-width: none;      /* Firefox */
-    -ms-overflow-style: none;   /* IE 10+ */
-}
-
-iframe::-webkit-scrollbar {
-    display: none;              /* Chrome, Safari ve Opera */
-}
-
+            width: 80%;
+            max-width: 800px;
+            height: 600px;
+            overflow: hidden; /* dış kaydırma gizle */
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: hidden;           /* iframe iç kaydırma gizle */
+            scrollbar-width: none;      /* Firefox */
+            -ms-overflow-style: none;   /* IE 10+ */
+        }
+        iframe::-webkit-scrollbar {
+            display: none;              /* Chrome, Safari, Opera */
+        }
         #oyunVerileri {
             margin-top: 30px;
             padding: 20px;
@@ -64,7 +63,7 @@ iframe::-webkit-scrollbar {
     <p>Aşağıdaki kutuda şans oyununu oynayabilirsiniz. Oyun verileri anlık olarak burada güncellenecektir.</p>
 
     <div class="iframe-container">
-        <iframe id="sansOyunuIframe" src="https://yilmazerutku.github.io/luckygame/luck" title="Gömülü Şans Oyunu Verileri"></iframe>
+        <iframe id="sansOyunuIframe" src="luck.html" title="Gömülü Şans Oyunu Verileri"></iframe>
     </div>
 
     <div id="oyunVerileri">
@@ -74,23 +73,14 @@ iframe::-webkit-scrollbar {
     </div>
 
     <script>
-        // iframe'den gelen mesajları dinliyoruz
         window.addEventListener('message', function(event) {
-            // Güvenlik için, mesajın beklediğin kaynaktan geldiğini kontrol edebilirsin.
-            // Örneğin: if (event.origin === 'https://raw.githubusercontent.com') { /* mesajı işle */ }
-            // Şu an için '*' kullanıyoruz, bu da her kaynaktan gelen mesaja izin verir.
-
             if (event.data && event.data.type === 'oyunVerisiGuncelleme') {
                 const gelenPuan = event.data.puan;
                 const gelenYatirilanElmas = event.data.yatirilanElmas;
-
-                // HTML'deki ilgili span etiketlerini güncelliyoruz
                 document.getElementById('anaPuan').textContent = gelenPuan;
                 document.getElementById('anaYatirilanElmas').textContent = gelenYatirilanElmas;
             }
         });
-
-        // İframe yüklendiğinde bir log mesajı görebilirsin (isteğe bağlı)
         document.getElementById('sansOyunuIframe').onload = function() {
             console.log("İframe başarıyla yüklendi. Veri alışverişi için hazır.");
         };
