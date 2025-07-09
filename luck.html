@@ -119,7 +119,7 @@
     <div class="minekutucuk">
         <strong>Maden</strong>
         <p>Dükkandan Alıp Güçlendirdiğiniz İşçiler Burada Çalışır.</p>
-        <button id="area1b" onclick="window.location.href='gömülü.html';">Maden 1'e git</button>
+        <button id="area1b" onclick="alert('Bu özellik şu an aktif değil.!');">Maden 1'e git</button> 
     </div>
 
     <script>
@@ -133,12 +133,11 @@
         function verileriGonder() {
             // Güvenlik notu: Eğer ana HTML dosyanız belirli bir domain'de yayınlanacaksa,
             // '*' yerine o domain'i (örneğin 'http://www.anadomain.com') yazmak daha güvenlidir.
-            // GitHub Raw URL'si için genellikle 'https://raw.githubusercontent.com' kullanabilirsiniz.
             window.parent.postMessage({
                 type: 'oyunVerisiGuncelleme', // Mesaj tipi, ana sayfada bunu kontrol edeceğiz
                 puan: puan,
                 yatirilanElmas: yatirilanElmas
-            }, '*'); // Şu an için tüm originlere izin veriyoruz
+            }, '*'); // Şu an için tüm originlere izin veriyoruz (GitHub Pages için genelde sorun olmaz)
         }
 
         function TahminiYakala() {
