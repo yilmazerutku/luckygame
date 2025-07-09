@@ -13,16 +13,67 @@
             margin: 0;
             overflow: hidden; /* Sayfa dışı kaydırma engelle */
         }
+
+         canvas {
+                display: block;
+                margin: 0 auto;
+                background-color: #a1a1a1;
+                border: 5px solid #000000;
+                height: 160px;
+                width: 200px;
+
+            }
         .iframe-container {
             width: 80%;
-            max-width: 800px;
-            height: 600px;
+            max-width: 600px;
+            height: 595px;
             overflow: hidden; /* dış kaydırma gizle */
             margin: 20px auto;
             border: 2px solid #333;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+
+        .kutucuk {
+            display: inline-block;
+            width: 350px;
+            height: 595px;  
+            margin: 10px;
+            border: 2px solid #333;
+            background-color: #eed582;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            line-height: 150px; /* Dikey ortalama */
+            font-size: 1.2em;
+            color: #555;
+            position: absolute;
+            top: 12%;
+            left: 2%;
+        }
+
+
+
+         .kutucukshop {
+            display: inline-block;
+            width: 350px;
+            height: 595px;  
+            margin: 10px;
+            border: 2px solid #333;
+            background-color: #eed582;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            line-height: 150px; /* Dikey ortalama */
+            font-size: 1.2em;
+            color: #555;
+            position: absolute;
+            top: 12%;
+            left: 2%;
+        }
+
+
+
         iframe {
             width: 100%;
             height: 100%;
@@ -32,7 +83,7 @@
             -ms-overflow-style: none;   /* IE 10+ */
         }
         iframe::-webkit-scrollbar {
-            display: none;              /* Chrome, Safari, Opera */
+            display: inline;              /* Chrome, Safari, Opera */
         }
         #oyunVerileri {
             margin-top: 30px;
@@ -43,6 +94,74 @@
             display: inline-block;
             text-align: left;
         }
+
+        #canvasDukkan {
+            display: block;
+            margin: 0 auto;
+            background-color: #a1a1a1;
+            border: 5px solid #000000;
+            height: 200px;
+            width: 305px;
+            position: absolute;
+            top: 11%;
+            left: 5%;
+        }
+
+        #canvasPiyasa {
+            display: block;
+            margin: 0 auto;
+            background-color: #a1a1a1;
+            border: 5px solid #000000;
+            height: 200px;
+            width: 305px;
+            position: absolute;
+            top: 56%;
+            left: 5%;
+        }
+
+            #dukkanT {
+                font-size: 1.5em;
+                color: #fffdfd;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                border-radius: 8px;
+                 position: absolute;
+
+                top: -10%;
+                left: 21%;
+
+
+            }
+
+
+
+
+     #dolarT {
+                font-size: 1.5em;
+                color: #fffdfd;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                border-radius: 8px;
+                position: absolute;
+
+                top: 35%;
+                left: 23%;
+
+            }
+
+             #envanterT {
+                font-size: 1.5em;
+                color: #fffdfd;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                border-radius: 8px;
+                
+
+            }
+
+
+
+
         #oyunVerileri h2 {
             color: #0056b3;
             margin-top: 0;
@@ -59,8 +178,33 @@
 </head>
 <body>
 
+
+
+            <div class="kutucuk">
+                                            <p id="dukkanT">Dükkan-Yakında</p> 
+                <canvas id="canvasDukkan"></canvas>
+                                             <p id="dolarT">Piyasa-Yakında</p>
+                <canvas id="canvasPiyasa"></canvas>
+                                                                                  
+                
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h1>Şans Oyunu Ana Sayfa</h1>
-    <p>Aşağıdaki kutuda şans oyununu oynayabilirsiniz. Oyun verileri anlık olarak burada güncellenecektir.</p>
 
     <div class="iframe-container">
         <iframe id="sansOyunuIframe" src="luck.html" title="Gömülü Şans Oyunu Verileri"></iframe>
