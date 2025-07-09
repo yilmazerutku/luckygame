@@ -12,9 +12,9 @@
             padding: 20px;
         }
         .iframe-container {
-            width: 80%; /* Genişliği artırdım, şans oyunu için daha uygun olabilir */
-            max-width: 800px; /* Maksimum genişlik ekledim */
-            height: 600px; /* Yüksekliği artırdım */
+            width: 80%;
+            max-width: 800px;
+            height: 600px;
             overflow: hidden;
             margin: 20px auto;
             border: 2px solid #333;
@@ -32,8 +32,8 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: inline-block; /* İçeriğe göre genişlemesini sağlar */
-            text-align: left; /* Metni sola hizala */
+            display: inline-block;
+            text-align: left;
         }
         #oyunVerileri h2 {
             color: #0056b3;
@@ -67,16 +67,10 @@
     <script>
         // iframe'den gelen mesajları dinliyoruz
         window.addEventListener('message', function(event) {
-            // Güvenlik notu: Eğer iframe'in geldiği kaynağı (origin) biliyorsanız,
-            // event.origin'i kontrol etmek ÇOK önemlidir. Örneğin:
-            // if (event.origin === 'https://raw.githubusercontent.com') {
-            //     // Güvenli mesajı işle
-            // } else {
-            //     console.warn("Bilinmeyen kaynaktan mesaj alındı:", event.origin);
-            //     return; // Güvenli olmayan mesajları yoksay
-            // }
+            // Güvenlik için, mesajın beklediğin kaynaktan geldiğini kontrol edebilirsin.
+            // Örneğin: if (event.origin === 'https://raw.githubusercontent.com') { /* mesajı işle */ }
+            // Şu an için '*' kullanıyoruz, bu da her kaynaktan gelen mesaja izin verir.
 
-            // Gelen verinin beklediğimiz tipte olup olmadığını kontrol edin
             if (event.data && event.data.type === 'oyunVerisiGuncelleme') {
                 const gelenPuan = event.data.puan;
                 const gelenYatirilanElmas = event.data.yatirilanElmas;
@@ -87,7 +81,7 @@
             }
         });
 
-        // İframe yüklendiğinde bir log mesajı görebilirsiniz (isteğe bağlı)
+        // İframe yüklendiğinde bir log mesajı görebilirsin (isteğe bağlı)
         document.getElementById('sansOyunuIframe').onload = function() {
             console.log("İframe başarıyla yüklendi. Veri alışverişi için hazır.");
         };
